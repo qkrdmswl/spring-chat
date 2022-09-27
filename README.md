@@ -6,6 +6,6 @@
   -npm install redux react-redux  
   -npm install redux-thunk  
   -npm install @reduxjs/toolkit  
-  -npm install axios
+  -npm install axios  
   -npm install react-router-dom@6
 
