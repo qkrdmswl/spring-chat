@@ -8,6 +8,7 @@
   -npm install @reduxjs/toolkit  
   -npm install axios  
   -npm install react-router-dom@6  
+  -npm install react-bootstrap bootstrap@5.1.3
     
 ## 프로젝트 규칙  
 - 코드, 폴더 구조 변경 금지  
