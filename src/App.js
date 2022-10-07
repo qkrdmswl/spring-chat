@@ -18,11 +18,11 @@ function App() {
         <Route path="/diary-create" element={<DiaryCreate/>}/>
         <Route path="/diary-detail" element={<DiaryDetail/>}/>
         <Route path="/diary-list" element={<DiaryList/>}/>
-        <Route path="/diary-detail" element={<DiaryDetail/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/main" element={<Main/>}/>
         <Route path="/Mypage" element={<Mypage/>}/>
         <Route path="/Register" element={<Register/>}/>
+        <Route path="/FindPassword" element={<FindPassword/>}/>
       </Routes>
     </div>
   );
