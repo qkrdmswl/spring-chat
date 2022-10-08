@@ -2,6 +2,7 @@ import React from 'react'
 import Navigation from '../component/Navigation'
 import { Routes, Route ,Link} from "react-router-dom";
 
+
 const DiaryDetail = () => {
   return (
     <div>
