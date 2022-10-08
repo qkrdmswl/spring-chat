@@ -7,3 +7,11 @@
   flex-direction: row;
   justify-content: space-evenly;
 }
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+    min-height: 400px;
+    margin-bottom: 20px;
+  }
+
+
+
