@@ -1,0 +1,26 @@
+.pagination{
+  margin: 0 auto;
+}
+
+.listNav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+    min-height: 400px;
+    margin-bottom: 20px;
+  }
+
+.log{
+  width: 70%;
+
+}
+
+.ant-notification-topRight {
+  position: absolute;
+}
+
+
+
