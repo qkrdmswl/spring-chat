@@ -1,22 +1,42 @@
 import React from 'react'
 import {Form, Button} from "react-bootstrap";
 import Axios from "axios";
-import toast from "bootstrap/js/src/toast";
+import { useNavigate } from 'react-router-dom';
+import {notification} from "antd";
+import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import {Formik} from "formik";
 import * as Yup from "yup";
 
+
 const Register = (props) => {
-  
+  const navigate = useNavigate();
   const submit = async (values) => {
     console.log(values);
-    const {email, password, username,location} = values;
-    await Axios.post('/api/auth/signup', {email, password, username,location})
-    .then(response =>{
-      console.log(response.response.status);
-    })
-    .catch(response => {
-      console.log(response.response.status);
+    let {email, password, username,location} = values;
+    let nickname;
+    nickname = username
+    username= email
+
+    try{
+    await Axios.post(`${process.env.REACT_APP_LOCAL_DJ_IP}user/signup/`, {nickname, password, username,location})
+
+    notification.open({
+      message:"회원가입 성공",
+      description:"로그인 페이지로 이동합니다.",
+      icon:<SmileOutlined/>
     });
+    navigate('/login')
+    }
+    catch(e){
+      if(e.response){
+        notification.open({
+          message:"회원가입 실패",
+          description:"아이디/비밀번호를 확인해주세요.",
+          icon:<SmileOutlined/>
+        })
+      }
+      ;
+    };
     // try {
     //   await axios.post('/api/auth/signup', {email, password, username,location});
 

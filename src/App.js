@@ -9,10 +9,11 @@ import Main from "./page/Main";
 import Mypage from "./page/Mypage";
 import Register from "./page/Register";
 import './App.css';
+import 'antd/dist/antd.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
-    <div >
+
       <Routes>
         <Route path="/" element={<Introduce/>}/>
         <Route path="/diary-create" element={<DiaryCreate/>}/>
@@ -24,7 +25,7 @@ function App() {
         <Route path="/Register" element={<Register/>}/>
         <Route path="/FindPassword" element={<FindPassword/>}/>
       </Routes>
-    </div>
+
   );
 }
 

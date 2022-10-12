@@ -13,5 +13,14 @@
     margin-bottom: 20px;
   }
 
+.log{
+  width: 70%;
+
+}
+
+.ant-notification-topRight {
+  position: absolute;
+}
+
 
 
