@@ -14,8 +14,8 @@ const Register = (props) => {
     console.log(values);
     let {email, password, username,location} = values;
     let nickname;
-    nickname = username
-    username= email
+    nickname = username;
+    username= email;
 
     try{
     await Axios.post(`${process.env.REACT_APP_LOCAL_DJ_IP}user/signup/`, {nickname, password, username,location})

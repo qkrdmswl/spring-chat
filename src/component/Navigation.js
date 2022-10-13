@@ -2,10 +2,16 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useNavigate} from "react-router-dom";
+import {setStorageItem}  from '../utils/useLocalStorage'
 
 
 const Navigation = () => {
+  const navigate = useNavigate();
+  const logout= () =>{
+    setStorageItem('jwtToken','')
+    navigate('/')
+  }
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Container>
@@ -23,7 +29,7 @@ const Navigation = () => {
         <Nav>
           <Nav.Link href="/diary-list">전체 일기장</Nav.Link>
           <Nav.Link href="/Mypage">마이페이지</Nav.Link>
-          <Nav.Link href="/">로그아웃</Nav.Link>
+          <Nav.Link onClick={logout}>로그아웃</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Container>
