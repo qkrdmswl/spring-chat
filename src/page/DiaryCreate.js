@@ -97,7 +97,7 @@ const DiaryCreate = () => {
 
             <CKEditor
               config={{
-                extraPlugins : [uploadPlugin],
+                // extraPlugins : [uploadPlugin],
                 placeholder: "내용을 입력하세요.",
             }}
               editor={ClassicEditor}
