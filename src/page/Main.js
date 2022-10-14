@@ -7,7 +7,7 @@ const Main = () => {
   const [k,setK]= useState("");
   
   return (
-    <div><Navigation/>
+    <div>
     <h1>메인 페이지 (Main)</h1>
     <h2>{getStorageItem("jwtToken","")}</h2>
     </div>

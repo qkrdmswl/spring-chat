@@ -4,13 +4,21 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate} from "react-router-dom";
 import {setStorageItem}  from '../utils/useLocalStorage'
+import {  Link } from "react-router-dom";
 
-
-const Navigation = () => {
+const Navigation = ({isAuthenticated,setAuthentication}) => {
   const navigate = useNavigate();
   const logout= () =>{
-    setStorageItem('jwtToken','')
+    setStorageItem('jwtToken','');
+    setAuthentication(false);
+    window.localStorage.clear();
     navigate('/')
+  }
+  const mypage=() => {
+    navigate('/mypage');
+  }
+  const diarylist = () => {
+    navigate('/diary-list')
   }
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -27,8 +35,8 @@ const Navigation = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end"> 
         <Nav>
-          <Nav.Link href="/diary-list">전체 일기장</Nav.Link>
-          <Nav.Link href="/Mypage">마이페이지</Nav.Link>
+          <Nav.Link onClick={diarylist}>전체 일기장</Nav.Link>
+          <Nav.Link onClick={mypage}>마이페이지</Nav.Link>
           <Nav.Link onClick={logout}>로그아웃</Nav.Link>
         </Nav>
       </Navbar.Collapse>
