@@ -77,11 +77,7 @@ const Register = (props) => {
 
 ​          <Form.Group controlId="formGroupName">
 ​            <Form.Label>사용자명</Form.Label>
-​            <Form.Control type="text" name="username" placeholder="사용하고자 하는 이름을 입력하세요"
-​                          value={values.username}
-​                          onChange={handleChange} onBlur={handleBlur}
-​                          isValid={touched.username && !errors.username}
-​                          isInvalid={touched.username && errors.username ? true : false} />
+​            <Form.Control type="text" name="username" placeholder="사용하고자 하는 이름을 입력하세요" value={values.username} onChange={handleChange} onBlur={handleBlur} isValid={touched.username && !errors.username} isInvalid={touched.username && errors.username ? true : false} />
 ​            { touched.username && !errors.username && <Form.Control.Feedback type="valid">확인되었습니다 :)</Form.Control.Feedback> }
 ​            { touched.username && errors.username && <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback> }
 ​          </Form.Group>
@@ -90,11 +86,7 @@ const Register = (props) => {
 
 ​          <Form.Group controlId="email">
 ​            <Form.Label>이메일 주소</Form.Label>
-​            <Form.Control name="email" placeholder="이메일 주소를 입력하세요"
-​                          value={values.email}
-​                          onChange={handleChange} onBlur={handleBlur}
-​                          isValid={touched.email && !errors.email}
-​                          isInvalid={touched.email && errors.email ? true : false} />
+​            <Form.Control name="email" placeholder="이메일 주소를 입력하세요" value={values.email} onChange={handleChange} onBlur={handleBlur} isValid={touched.email && !errors.email} isInvalid={touched.email && errors.email ? true : false} />
 ​            { touched.email && !errors.email && <Form.Control.Feedback type="valid">확인되었습니다 :)</Form.Control.Feedback> }
 ​            { touched.email && errors.email && <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback> }
 ​          </Form.Group>
@@ -103,11 +95,7 @@ const Register = (props) => {
 
 ​          <Form.Group controlId="formGroupPassword">
 ​            <Form.Label>비밀번호</Form.Label>
-​            <Form.Control type="password" name="password" placeholder="비밀번호를 입력하세요"
-​                          value={values.password}
-​                          onChange={handleChange} onBlur={handleBlur}
-​                          isValid={touched.password && !errors.password}
-​                          isInvalid={touched.password && errors.password ? true : false} />
+​            <Form.Control type="password" name="password" placeholder="비밀번호를 입력하세요" value={values.password} onChange={handleChange} onBlur={handleBlur} isValid={touched.password && !errors.password} isInvalid={touched.password && errors.password ? true : false} />
 ​            { touched.password && !errors.password && <Form.Control.Feedback type="valid">확인되었습니다 :)</Form.Control.Feedback> }
 ​            { touched.password && errors.password && <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback> }
 ​          </Form.Group>
@@ -116,11 +104,7 @@ const Register = (props) => {
 
 ​          <Form.Group controlId="formGroupPassword2">
 ​            <Form.Label>비밀번호 확인</Form.Label>
-​            <Form.Control type="password" name="password2" placeholder="비밀번호를 재입력해주세요"
-​                          value={values.password2}
-​                          onChange={handleChange} onBlur={handleBlur}
-​                          isValid={touched.password2 && !errors.password2}
-​                          isInvalid={touched.password2 && errors.password2 ? true : false} />
+​            <Form.Control type="password" name="password2" placeholder="비밀번호를 재입력해주세요" value={values.password2} onChange={handleChange} onBlur={handleBlur} isValid={touched.password2 && !errors.password2} isInvalid={touched.password2 && errors.password2 ? true : false} />
 ​            { touched.password2 && !errors.password2 && <Form.Control.Feedback type="valid">확인되었습니다 :)</Form.Control.Feedback> }
 ​            { touched.password2 && errors.password2 && <Form.Control.Feedback type="invalid">{errors.password2}</Form.Control.Feedback> }
 ​          </Form.Group>
@@ -129,11 +113,7 @@ const Register = (props) => {
 
 ​          <Form.Group controlId="location">
 ​            <Form.Label>주소</Form.Label>
-​            <Form.Select name='location'
-​                          value={values.location}
-​                          onChange={handleChange} onBlur={handleBlur}
-​                          isValid={touched.location && !errors.location}
-​                          isInvalid={touched.location && errors.location ? true : false}>
+​            <Form.Select name='location' value={values.location} onChange={handleChange} onBlur={handleBlur} isValid={touched.location && !errors.location} isInvalid={touched.location && errors.location ? true : false}>
 ​                                <option>지역을 선택해 주세요.</option>
 ​                                <option>서울</option>
 ​                                <option>경기도</option>
@@ -154,9 +134,7 @@ const Register = (props) => {
 
 ​          <Form.Group controlId="formGroupQuestion1">
 ​            <Form.Label>가장 좋아하는 색깔은?</Form.Label>
-​            <Form.Control type="text" name="question1"
-​                          value={values.question1}
-​                          onChange={handleChange} onBlur={handleBlur}/>
+​            <Form.Control type="text" name="question1" value={values.question1} onChange={handleChange} onBlur={handleBlur}/>
 ​            <Form.Text className="text-muted">
 ​                    ex) 검정색
 ​                  </Form.Text>
@@ -166,20 +144,18 @@ const Register = (props) => {
 
 ​          <Form.Group controlId="formGroupQuestion2">
 ​            <Form.Label>가장 좋아하는 음식은?</Form.Label>
-​            <Form.Control type="text" name="question2"
-​                          value={values.question2}
-​                          onChange={handleChange} onBlur={handleBlur}/>
+​            <Form.Control type="text" name="question2" value={values.question2} onChange={handleChange} onBlur={handleBlur}/>
 ​                          <Form.Text className="text-muted">
 ​                    ex) 떡볶이
 ​                  </Form.Text>
-​          </Form.Group>
+         </Form.Group>
 
-​          <Button variant="primary" type="submit" disabled={isSubmitting}>
-​            Submit
-​          </Button>
-​        </Form>)
-​      }
-​    </Formik>
+         <Button variant="primary" type="submit" disabled={isSubmitting}>
+           Submit
+         </Button>
+       </Form>)
+}
+   </Formik>
   );
 }
 
