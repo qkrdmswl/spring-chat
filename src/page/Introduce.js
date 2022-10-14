@@ -49,11 +49,7 @@ const Introduce = () => {
 ​              <Link to="/login"><Button variant="info">Start</Button></Link>
 ​          </Col>
 ​          <Col>
-​          <img alt=""
-​          src="/logo.svg"
-​          width="300"
-​          height="300"
-​          />
+​          <img alt="" src="/logo.svg" width="300" height="300"/>
 ​          </Col>
 ​        </Row>
 
