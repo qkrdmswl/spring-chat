@@ -11,8 +11,9 @@ import Col from 'react-bootstrap/Col';
 
 
 const Introduce = () => {
-  return (
 
+  return (
+    
     <div>
     {/* 네비게이션 바 추가 필요 */}
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

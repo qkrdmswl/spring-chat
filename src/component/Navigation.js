@@ -23,7 +23,7 @@ const Navigation = ({isAuthenticated,setAuthentication}) => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Container>
-      <Navbar.Brand href="/main">
+      <Link to={'/main'}><Navbar.Brand>
         <img
           alt=""
           src="/logo.svg"
@@ -31,7 +31,7 @@ const Navigation = ({isAuthenticated,setAuthentication}) => {
           height="30"
           className="d-inline-block align-top"
         />{' '}
-        Haru Emotion Diary</Navbar.Brand>
+        Haru Emotion Diary</Navbar.Brand></Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end"> 
         <Nav>
