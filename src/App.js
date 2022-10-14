@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {React,useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { Routes, Route ,Link} from "react-router-dom";
 import {userActions} from './redux/actions/userAction';
@@ -14,28 +14,35 @@ import Register from "./page/Register";
 import './App.css';
 import 'antd/dist/antd.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigation from './component/Navigation'
 function App() {
   const dispatch =useDispatch();
-  useEffect(()=>{
-    dispatch(userActions.getUserState());
-  })
+  // const {isAuthenticated} = useSelector(state => state.user);
+  let [isAuthenticated , setAuthentication] = useState(false);
+  // useEffect(()=>{
+    
+  //   dispatch(userActions.getUserState());
+  // },[isAuthenticated])
 
-  const {isAuthenticated} = useSelector(state => state.user);
-  console.log(isAuthenticated)
+
+
 
   return (
-
+    <div>
+    <Navigation authentication={isAuthenticated}  setAuthentication={setAuthentication}/>
       <Routes>
         <Route path="/" element={<Introduce/>}/>
-        <Route path="/diary-create" element={isAuthenticated==true ? <DiaryCreate/> : <Login/>}/>
-        <Route path="/diary-detail" element={isAuthenticated==true ? <DiaryDetail/> : <Login/>}/>
-        <Route path="/diary-list" element={isAuthenticated==true ? <DiaryList/> : <Login/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/main" element={isAuthenticated==true ? <Main/> : <Login/>}/>
-        <Route path="/Mypage" element={isAuthenticated==true ? <Mypage/> : <Login/>}/>
+        <Route path="/diary-create" element={isAuthenticated==true ? <DiaryCreate authentication={isAuthenticated} /> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
+        <Route path="/diary-detail" element={isAuthenticated==true ? <DiaryDetail authentication={isAuthenticated}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
+        <Route path="/diary-list" element={isAuthenticated==true ? <DiaryList authentication={isAuthenticated}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
+        <Route path="/login" element={<Login setAuthentication={setAuthentication}/>}/>
+        <Route path="/main" element={isAuthenticated ? <Main authentication={isAuthenticated}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
+        <Route path="/Mypage" element={isAuthenticated==true ? <Mypage authentication={isAuthenticated}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
         <Route path="/Register" element={<Register/>}/>
-        <Route path="/FindPassword" element={isAuthenticated==true ? <FindPassword/> : <Login/>}/>
+        <Route path="/FindPassword" element={<FindPassword/>}/>
       </Routes>
+
+    </div>
 
   );
 }

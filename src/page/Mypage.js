@@ -1,18 +1,46 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import Navigation from '../component/Navigation'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import {notification} from "antd";
+import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
+import Axios from "axios";
 import InputGroup from 'react-bootstrap/InputGroup';
-import { Routes, Route ,Link} from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 
-const Mypage = () => {
+const Mypage = (isAuthenticated) => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const {pk} = useSelector(state => state.user);
+  console.log(pk,isAuthenticated);
+  const deleteAccount =async(event)=>{
+    event.preventDefault();
+    try{
+    const response = await Axios.delete(`${process.env.REACT_APP_LOCAL_DJ_IP}user/delete/${pk.payload}/`)
+    window.localStorage.clear();
+    handleClose();
+    notification.open({
+      message: "계정삭제 성공",
+      icon: <SmileOutlined style={{ color: "#108ee9" }} />,
+      placement : 'topRight'
+    });
+    navigate('/')
+    }catch(e){
+      notification.open({
+        message: "계정삭제 실패, 다시 시도해 주세요.",
+        icon: <FrownOutlined style={{ color: "#108ee9" }} />,
+        placement : 'topRight'
+      });
+
+    }
+  }
   return (
     <div>
-      <Navigation/>
+
       
       <br />
       <form action='' method='post'>
@@ -53,7 +81,7 @@ const Mypage = () => {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="danger" onClick={handleClose}>
+            <Button variant="danger" onClick={deleteAccount}>
               Delete
             </Button>
           </Modal.Footer>
