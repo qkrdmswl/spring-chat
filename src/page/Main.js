@@ -5,7 +5,7 @@ import {useLocalStorage,getStorageItem}  from '../utils/useLocalStorage';
 
 const Main = () => {
   const [k,setK]= useState("");
-  
+  //  
   return (
     <div>
     <h1>메인 페이지 (Main)</h1>
