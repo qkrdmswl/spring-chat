@@ -13,31 +13,7 @@ import Col from 'react-bootstrap/Col';
 const Introduce = () => {
 
   return (
-    
     <div>
-    {/* 네비게이션 바 추가 필요 */}
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-    <Container>
-      <Navbar.Brand href="/">
-        <img
-          alt=""
-          src="/logo.svg"
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-        />{' '}
-        Haru Emotion Diary</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end"> 
-        <Nav>
-          <Nav.Link href="/login">Sign In</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Container>
-  </Navbar>
-
-
-    <h1>소개 페이지 (Introduce)</h1>
 
 ​      <Container className="align-items-center justify-content-center">
 ​        <Row >
