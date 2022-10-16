@@ -13,7 +13,6 @@ import PostCard from '../component/PostCard';
 const DiaryList = () => {
   return (
     <div>
-      <Navigation/>
         <br/><br/><br/>
         <Container>
         <Row >

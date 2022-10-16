@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div>
-    <Navigation authentication={isAuthenticated}  setAuthentication={setAuthentication}/>
+    <Navigation isAuthenticated={isAuthenticated}  setAuthentication={setAuthentication}/>
       <Routes>
         <Route path="/" element={<Introduce/>}/>
         <Route path="/diary-create" element={isAuthenticated==true ? <DiaryCreate authentication={isAuthenticated} /> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
