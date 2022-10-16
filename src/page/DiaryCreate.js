@@ -29,9 +29,6 @@ const DiaryCreate = () => {
     content: ''
   })
 
-  //다이어리 어레이 값으로 넘겨주기
-  const [viewContent, setViewContent] = useState([]);
-
 
   //event가 생기면 값을 받아오는 것
   const getValue = (event) => {
@@ -45,14 +42,8 @@ const DiaryCreate = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    // setViewContent(viewContent.concat({...diaryContent}))
-    setViewContent((viewContent) => [diaryContent, ...viewContent]);
-    console.log(viewContent)
+    console.log(diaryContent);
   }
-
-
-
-
 
 
 
@@ -103,16 +94,16 @@ const DiaryCreate = () => {
                 }}
               />
               <Upload
-                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                // action="https://www.mocky.io/v2/5cc8019d300000980a055e76" 이미지 업로드 url
                 listType="picture"
                 maxCount={1}
               >
-                <Button icon={<UploadOutlined />}>Upload (Max: 1)</Button>
+                <Button icon={<UploadOutlined />}>이미지 올리기</Button>
               </Upload>
 
               <div className='mt-3'>
-                <Link to="/diary-detail"><Button type="submit" variant="info">저장</Button></Link>
-                {/* <Button type="submit" variant="info">저장</Button> */}
+                {/* <Link to="/diary-detail"><Button type="submit" variant="info">저장</Button></Link> */}
+                <Button type="submit" variant="info">저장</Button>
                 <Link to="/diary-list"><Button variant="info">취소</Button></Link>
               </div>
             </Form>
