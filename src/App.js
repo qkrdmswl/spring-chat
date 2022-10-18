@@ -1,7 +1,5 @@
 import {React,useState} from 'react'
-import { useDispatch,useSelector } from 'react-redux';
-import { Routes, Route ,Link,Navigate} from "react-router-dom";
-import {userActions} from './redux/actions/userAction';
+import { Routes, Route ,Navigate} from "react-router-dom";
 import Introduce from './page/Introduce';
 import Login from "./page/Login";
 import DiaryCreate from "./page/DiaryCreate";
@@ -16,16 +14,8 @@ import 'antd/dist/antd.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './component/Navigation'
 function App() {
-  const dispatch =useDispatch();
-  // const {isAuthenticated} = useSelector(state => state.user);
   let [isAuthenticated , setAuthentication] = useState(false);
-
-  // useEffect(()=>{
-    
-  //   dispatch(userActions.getUserState());
-  // },[isAuthenticated])
-
-
+  
  
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import getStorageItem from '../utils/useLocalStorage'
 import Navigation from '../component/Navigation'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import {notification} from "antd";
 import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import Axios from "axios";
+import jwt_decode from "jwt-decode";
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Link,useNavigate} from "react-router-dom";
 
@@ -15,12 +16,13 @@ const Mypage = (isAuthenticated) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const {pk} = useSelector(state => state.user);
-  console.log(pk,isAuthenticated);
+  const token = getStorageItem('jwtToken','')[0]
+  const {user_id}= jwt_decode(token);
+
   const deleteAccount =async(event)=>{
     event.preventDefault();
     try{
-    const response = await Axios.delete(`${process.env.REACT_APP_LOCAL_DJ_IP}user/delete/${pk.payload}/`)
+    const response = await Axios.delete(`${process.env.REACT_APP_LOCAL_DJ_IP}user/delete/${user_id.payload}/`)
     window.localStorage.clear();
     handleClose();
     notification.open({

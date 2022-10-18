@@ -14,16 +14,15 @@ const FindPassword = () => {
   
   const onSubmitFirst =(event)=>{
     event.preventDefault();
-    console.log(answerQuestion1, answerQuestion2)
+    console.log(answerQuestion1, answerQuestion2);
     
     //이메일 본인 인증 및 답변 맞게 했는지 확인 (ex)
     if (checkEmail==="jinjusr365@naver.com" && answerQuestion1 === "검정색" && answerQuestion2 ==="떡볶이"){
       setVisible(!visible)
-      console.log('성공')
-
+      console.log('성공');
     }else{
       console.log('실패');
-      alert("이메일 혹은 답변을 확인해주세요")
+      alert("이메일 혹은 답변을 확인해주세요");
 
     }
   }
