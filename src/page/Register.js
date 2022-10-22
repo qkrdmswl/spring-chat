@@ -1,15 +1,23 @@
 import React from 'react'
 import {Form, Button} from "react-bootstrap";
 import Axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {notification} from "antd";
 import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import {Formik} from "formik";
 import * as Yup from "yup";
+import logo_detail from '../image/logo_detail.png';
 
 
-const Register = (props) => {
+const Register = ({setNavVisible, props}) => {
+  setNavVisible(false);
+
   const navigate = useNavigate();
+
+  const navigateIntroduce =()=>{
+    navigate("/");
+  }
+
   const submit = async (values) => {
     console.log(values);
     let {email, password, username,location} = values;
@@ -63,6 +71,8 @@ const Register = (props) => {
     // }
   }
   return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    
     <Formik
       initialValues={{ email: '', password: '', password2: '', username: '', location: ''}}
       onSubmit={submit}
@@ -91,7 +101,8 @@ const Register = (props) => {
             isSubmitting }) => (<Form onSubmit={handleSubmit}>
 
           <br />
-
+          <Link to="/"><img src={logo_detail} width="300" height="150" /></Link>
+          
           <Form.Group controlId="formGroupName">
             <Form.Label>사용자명</Form.Label>
             <Form.Control type="text" name="username" placeholder="사용하고자 하는 이름을 입력하세요"
@@ -166,13 +177,14 @@ const Register = (props) => {
             { touched.location && !errors.location && <Form.Control.Feedback type="valid">확인되었습니다 :)</Form.Control.Feedback> }
             { touched.location && errors.location && <Form.Control.Feedback type="invalid">{errors.location}</Form.Control.Feedback> }
           </Form.Group>
-
-          <Button variant="primary" type="submit" disabled={isSubmitting}>
-            Submit
+          <br/>
+          <Button className="w-100" variant="primary" type="submit" disabled={isSubmitting}>
+            회원가입
           </Button>
         </Form>)
       }
     </Formik>
+    </div>
   );
 }
 

@@ -7,7 +7,8 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import ReactApexChart from "react-apexcharts"; 
 
 
-const Main = () => {
+const Main = ({setNavVisible}) => {
+  setNavVisible(true);
   const [value, onChange] = useState(new Date());
 
   //오늘 날짜 가져오기

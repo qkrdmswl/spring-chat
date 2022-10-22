@@ -5,13 +5,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from "react-router-dom";
 import { setStorageItem } from '../utils/useLocalStorage'
 import { Link } from "react-router-dom";
+import logo_detail from '../image/logo_detail.png';
+
 
 const Navigation = ({ isAuthenticated, setAuthentication }) => {
   // isAuthenticated = undefined 나옴
   console.log(isAuthenticated);
   const navigate = useNavigate();
-  
-  const login = ()=>{
+
+  const login = () => {
     navigate('/login')
   }
 
@@ -30,28 +32,28 @@ const Navigation = ({ isAuthenticated, setAuthentication }) => {
 
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg">
       <Container>
         <Link to={'/main'}><Navbar.Brand>
           <img
             alt=""
-            src="/logo.svg"
-            width="30"
-            height="30"
+            src={logo_detail}
+            width="120"
+            height="60"
             className="d-inline-block align-top"
-          />{' '}
-          Haru Emotion Diary</Navbar.Brand></Link>
+          />
+        </Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
 
-            {isAuthenticated==false? 
-            <Nav><Nav.Link onClick={login}>Sign in</Nav.Link></Nav> : 
-              
+          {isAuthenticated == false ?
+            <Nav><Nav.Link onClick={login}>Sign in</Nav.Link></Nav> :
+
             <Nav><Nav.Link onClick={diarylist}>전체 일기장</Nav.Link>
               <Nav.Link onClick={mypage}>마이페이지</Nav.Link>
               <Nav.Link onClick={logout}>로그아웃</Nav.Link>
-            </Nav>  
-            }
+            </Nav>
+          }
 
         </Navbar.Collapse>
       </Container>
