@@ -13,24 +13,26 @@ import './App.css';
 import 'antd/dist/antd.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './component/Navigation'
+
 function App() {
   let [isAuthenticated , setAuthentication] = useState(false);
+  let [navVisible,setNavVisible] = useState(true);
   
  
 
   return (
     <div>
-    <Navigation isAuthenticated={isAuthenticated}  setAuthentication={setAuthentication}/>
+    {navVisible && <Navigation isAuthenticated={isAuthenticated}  setAuthentication={setAuthentication}/>}
       <Routes>
-        <Route path="/" element={<Introduce/>}/>
-        <Route path="/diary-create" element={isAuthenticated==true ? <DiaryCreate authentication={isAuthenticated} /> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
-        <Route path="/diary-detail" element={isAuthenticated==true ? <DiaryDetail authentication={isAuthenticated}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
-        <Route path="/diary-list" element={isAuthenticated==true ? <DiaryList authentication={isAuthenticated}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
-        <Route path="/login" element={<Login setAuthentication={setAuthentication}/>}/>
-        <Route path="/main" element={isAuthenticated ? <Main authentication={isAuthenticated}/> : <Navigate replace to="/" />} />
-        <Route path="/Mypage" element={isAuthenticated==true ? <Mypage authentication={isAuthenticated}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
-        <Route path="/Register" element={<Register/>}/>
-        <Route path="/FindPassword" element={<FindPassword/>}/>
+        <Route path="/" element={<Introduce setNavVisible={setNavVisible}/>}/>
+        <Route path="/diary-create" element={isAuthenticated==true ? <DiaryCreate authentication={isAuthenticated} setNavVisible={setNavVisible}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
+        <Route path="/diary-detail" element={isAuthenticated==true ? <DiaryDetail authentication={isAuthenticated} setNavVisible={setNavVisible}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
+        <Route path="/diary-list" element={isAuthenticated==true ? <DiaryList authentication={isAuthenticated} setNavVisible={setNavVisible}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
+        <Route path="/login"  element={<Login setAuthentication={setAuthentication} setNavVisible={setNavVisible}/>}/>
+        <Route path="/main" element={isAuthenticated ? <Main authentication={isAuthenticated} setNavVisible={setNavVisible}/> : <Navigate replace to="/" />} />
+        <Route path="/Mypage" element={isAuthenticated==true ? <Mypage authentication={isAuthenticated} setNavVisible={setNavVisible}/> : <Login authentication={isAuthenticated} setAuthentication={setAuthentication}/>}/>
+        <Route path="/Register" element={<Register setNavVisible={setNavVisible}/>}/>
+        <Route path="/FindPassword" element={<FindPassword setNavVisible={setNavVisible}/>}/>
       </Routes>
 
     </div>

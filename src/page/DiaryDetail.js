@@ -3,7 +3,8 @@ import Navigation from '../component/Navigation'
 import { Routes, Route ,Link} from "react-router-dom";
 
 
-const DiaryDetail = () => {
+const DiaryDetail = ({setNavVisible}) => {
+  setNavVisible(true);
   return (
     <div>
       <Navigation/>

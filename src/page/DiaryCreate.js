@@ -19,7 +19,8 @@ import { Container, Form, Row, Col } from 'react-bootstrap';
 import { UploadOutlined } from '@ant-design/icons';
 import { Space, Upload } from 'antd';
 
-const DiaryCreate = () => {
+const DiaryCreate = ({setNavVisible}) => {
+  setNavVisible(true);
   //다이어리 날짜  
   const [startDate, setStartDate] = useState(new Date());
 

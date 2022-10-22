@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import PostCard from '../component/PostCard';
 
-const DiaryList = () => {
+const DiaryList = ({setNavVisible}) => {
   return (
     <div>
         <br/><br/><br/>
