@@ -7,7 +7,8 @@ import {SmileOutlined, FrownOutlined} from "@ant-design/icons";
  
 const FindPassword = (props) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
+  const [user_id,setUser_id] =useState('');
+  let [user, setUser] = useState({
     username: '',
     hint1: '',
     hint2: ''
@@ -33,7 +34,9 @@ const FindPassword = (props) => {
     console.log(user);
 
     try {
-        const response = await Axios.post('${process.env.REACT_APP_LOCAL_DJ_IP}user/findpassword',user)
+        const response = await Axios.post(`${process.env.REACT_APP_LOCAL_DJ_IP}user/findPassword/`,{user})
+
+        setUser_id(response.data[0].id);
         notification.open({
           message:"인증 성공!",
           description:"변경할 비밀번호를 입력해주세요.",
@@ -58,9 +61,10 @@ const FindPassword = (props) => {
   const onSubmit2 = async (event) => {
     event.preventDefault();
     console.log(newPassword);
-    if (newPassword.password1 === newPassword.password2){
+
     try {
-      await Axios.post('${process.env.REACT_APP_LOCAL_DJ_IP}user/findpassword',newPassword)
+      const password=newPassword.password1
+      await Axios.patch(`${process.env.REACT_APP_LOCAL_DJ_IP}user/edit/pwd/${user_id}/`,{password})
       notification.open({
         message:"비밀번호 변경 성공!",
         icon:<SmileOutlined/>
@@ -77,13 +81,6 @@ const FindPassword = (props) => {
       })
     }
   };
-}else{
-  notification.open({
-    message:"비밀번호가 일치하지 않습니다!",
-    description:"다시 입력해주세요.",
-    icon:<SmileOutlined/>
-  })
-}
 }
 
     return (
