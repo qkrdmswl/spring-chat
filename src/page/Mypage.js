@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { notification } from "antd";
 import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
+import useLocalStorage from '../utils/useLocalStorage';
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -24,6 +25,7 @@ const Mypage = ({ isAuthenticated, setNavVisible }) => {
   const namehandleShow = () => setnameShow(true);
 
   const token = getStorageItem('jwtToken', '')[0]
+  const [jwtToken, setJwtToken] = useLocalStorage("jwtToken", "");
   const { user_id } = jwt_decode(token);
   console.log(user_id)
   let { nickname } = jwt_decode(token);
@@ -35,9 +37,14 @@ const Mypage = ({ isAuthenticated, setNavVisible }) => {
     event.preventDefault();
     console.log(changeName)
     try {
-      nickname=changeName
+      let nickname=changeName
       const response = await Axios.patch(`${process.env.REACT_APP_LOCAL_DJ_IP}user/edit/info/${user_id}/`,{nickname})
-
+      console.log(token)
+      // const response2 = await Axios.post(`${process.env.REACT_APP_LOCAL_DJ_IP}user/token/`,{token})
+      // console.log(response2)
+      // const token = response2.data.access;
+      // console.log(token)
+      // setJwtToken(token);
       namehandleClose();
       notification.open({
         message: "이름변경 성공",
@@ -55,7 +62,7 @@ const Mypage = ({ isAuthenticated, setNavVisible }) => {
     const deleteAccount = async (event) => {
       event.preventDefault();
       try {
-        const response = await Axios.delete(`${process.env.REACT_APP_LOCAL_DJ_IP}user/delete/${user_id.payload}/`)
+        const response = await Axios.delete(`${process.env.REACT_APP_LOCAL_DJ_IP}user/delete/${user_id}/`)
         window.localStorage.clear();
         handleClose();
         notification.open({

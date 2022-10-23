@@ -20,13 +20,13 @@ const Register = ({setNavVisible, props}) => {
 
   const submit = async (values) => {
     console.log(values);
-    let {email, password, username,location} = values;
+    let {email, password, username,location,hint1,hint2} = values;
     let nickname;
     nickname = username;
     username= email;
 
     try{
-    await Axios.post(`${process.env.REACT_APP_LOCAL_DJ_IP}user/signup/`, {nickname, password, username,location})
+    await Axios.post(`${process.env.REACT_APP_LOCAL_DJ_IP}user/signup/`, {nickname, password, username,location,hint1,hint2})
 
     notification.open({
       message:"회원가입 성공",
@@ -74,7 +74,7 @@ const Register = ({setNavVisible, props}) => {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
     
     <Formik
-      initialValues={{ email: '', password: '', password2: '', username: '', location: ''}}
+      initialValues={{ email: '', password: '', password2: '', username: '', location: '',hint1:'',hint2:''}}
       onSubmit={submit}
       validationSchema={Yup.object().shape({
         email: Yup.string()
@@ -89,6 +89,10 @@ const Register = ({setNavVisible, props}) => {
         username: Yup.string()
           .required("필수 입력 사항입니다 :("),
         location: Yup.string()
+          .required("필수 선택 사항입니다 :("),
+        hint1: Yup.string()
+          .required("필수 선택 사항입니다 :("),
+        hint2: Yup.string()
           .required("필수 선택 사항입니다 :(")
       })}>
       {
@@ -152,6 +156,28 @@ const Register = ({setNavVisible, props}) => {
             { touched.password2 && !errors.password2 && <Form.Control.Feedback type="valid">확인되었습니다 :)</Form.Control.Feedback> }
             { touched.password2 && errors.password2 && <Form.Control.Feedback type="invalid">{errors.password2}</Form.Control.Feedback> }
           </Form.Group>
+
+          <Form.Group controlId="formGroupName">
+          <Form.Label>hint1</Form.Label>
+          <Form.Control type="text" name="hint1" placeholder="가장 좋아하는 음식을 입력하세요.(비밀번호 찾기시에 활용됩니다.)"
+                        value={values.hint1}
+                        onChange={handleChange} onBlur={handleBlur}
+                        isValid={touched.hint1 && !errors.hint1}
+                        isInvalid={touched.hint1 && errors.hint1 ? true : false} />
+          { touched.hint1 && !errors.hint1 && <Form.Control.Feedback type="valid">확인되었습니다 :)</Form.Control.Feedback> }
+          { touched.hint1 && errors.hint1 && <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback> }
+        </Form.Group>
+
+        <Form.Group controlId="formGroupName">
+        <Form.Label>hint2 (가장 친한 친구 이름은?)</Form.Label>
+        <Form.Control type="text" name="hint2" placeholder="가장 친한 친구를 입력하세요.(비밀번호 찾기시에 활용됩니다.)"
+                      value={values.hint2}
+                      onChange={handleChange} onBlur={handleBlur}
+                      isValid={touched.hint2 && !errors.hint2}
+                      isInvalid={touched.hint2 && errors.hint2 ? true : false} />
+        { touched.hint2 && !errors.hint2 && <Form.Control.Feedback type="valid">확인되었습니다 :)</Form.Control.Feedback> }
+        { touched.hint2 && errors.hint2 && <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback> }
+      </Form.Group>
 
         <br />
 
