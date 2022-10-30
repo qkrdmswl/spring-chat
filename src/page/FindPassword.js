@@ -33,7 +33,6 @@ const FindPassword = (props) => {
     event.preventDefault();
     console.log(user);
 
-
     try {
         const response = await Axios.post(`${process.env.REACT_APP_LOCAL_DJ_IP}user/findPassword/`,{user})
 
@@ -61,7 +60,8 @@ const FindPassword = (props) => {
 
   const onSubmit2 = async (event) => {
     event.preventDefault();
-    if (newPassword.password1 === newPassword.password2 & newPassword.password1.length>=6){
+    console.log(newPassword);
+
     try {
       const password=newPassword.password1
       await Axios.patch(`${process.env.REACT_APP_LOCAL_DJ_IP}user/edit/pwd/${user_id}/`,{password})
@@ -81,13 +81,6 @@ const FindPassword = (props) => {
       })
     }
   };
-}else{
-  notification.open({
-    message:"비밀번호가 일치하지 않습니다!",
-    description:"다시 입력해주세요.",
-    icon:<SmileOutlined/>
-  })
-}
 }
 
     return (

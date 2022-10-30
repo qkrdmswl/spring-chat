@@ -17,12 +17,17 @@ import { Container, Form, Row, Col } from 'react-bootstrap';
 
 //antd
 import { UploadOutlined } from '@ant-design/icons';
-import { Space, Upload } from 'antd';
+import { Space, Upload, notification } from 'antd';
+import { Axios } from 'axios';
+
+//etc
+import {useNavigate} from 'react-router-dom';
+import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 
 const DiaryCreate = ({setNavVisible}) => {
   setNavVisible(true);
   //다이어리 날짜  
-  const [startDate, setStartDate] = useState(new Date());
+  const [created_at, setDate_time] = useState(new Date());
 
   //다이어리 title과 content
   const [diaryContent, setDiaryContent] = useState({
@@ -30,6 +35,7 @@ const DiaryCreate = ({setNavVisible}) => {
     content: ''
   })
 
+  const navigate = useNavigate();
 
   //event가 생기면 값을 받아오는 것
   const getValue = (event) => {
@@ -41,9 +47,29 @@ const DiaryCreate = ({setNavVisible}) => {
   }
 
 
-  const onSubmit = (event) => {
+  const onSubmit =async (event) => {
     event.preventDefault();
-    console.log(diaryContent);
+    console.log(created_at,diaryContent);
+
+    let {title, content} = diaryContent;
+
+    try {
+      await Axios.post(`${process.env.REACT_APP_LOCAL_DJ_IP}post/create/`,{created_at, title, content})
+      notification.open({
+        message:"회원가입 성공",
+        description:"로그인 페이지로 이동합니다.",
+        icon:<SmileOutlined/>
+      }); 
+      navigate('/DiaryDetail')
+    }
+    catch(e){
+      if(e.response){
+        notification.open({
+          message:"회원가입 실패",
+          description:"아이디/비밀번호를 확인해주세요.",
+          icon:<FrownOutlined/>
+        })};
+    }
   }
 
 
@@ -55,7 +81,7 @@ const DiaryCreate = ({setNavVisible}) => {
           <Row className="mt-3"> <h2>일기 작성</h2></Row>
 
           <Row>
-            <Col lg={9}><DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /></Col>
+            <Col lg={9}><DatePicker selected={created_at} onChange={(date) => setDate_time(date)} /></Col>
             {/* <DatePicker defaultValue={moment({startDate}, dateFormat)} format={dateFormat} /> */}
           
           </Row>
