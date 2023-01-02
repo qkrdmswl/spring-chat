@@ -2,12 +2,12 @@ FROM python:3.10.4
 
 MAINTAINER Eunji Park <izzy@minerinc.io>
 
-WORKDIR /shotag/backend/
+WORKDIR /shotag/nlpserver/
 
 RUN pip3 install django
 
 
-COPY requirements.txt /shotag/backend/
+COPY requirements.txt /shotag/nlpserver/
 RUN pip3 install -r requirements.txt
 
 COPY . .
