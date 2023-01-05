@@ -13,21 +13,40 @@ const create = async (req, res) => {
     res.status(200).send(post);
 };
 
-// const getPostList = (req, res) => {
-//     Post.findAll()
-//       .then(data => {
-//           res.send(data);
-//       })
-//       .catch(err => {
-//           res.status(500).send({
-//               message:
-//               err.message || "Some error occurred while retrieving Posts."
-//           });
-//       });
-// };
+const getPostList = async (req, res) => {
+    const posts = await Post.findAll({}).catch((err) => console.log(err));
+    res.status(200).send(posts);
+};
+
+const getPostDetail = async (req, res) => {
+    const id = req.params.id;
+    const post = await Post.findOne({ where: { id: id } }).catch((err) =>
+        console.log(err)
+    );
+    res.status(200).send(post);
+};
+
+const update = async (req, res) => {
+    const id = req.params.id;
+    const post = await Post.update(req.body, { where: {id: id} }).catch((err) =>
+        console.log(err)
+    );
+    res.status(200).send(post);
+};
+
+const deletePost = async (req, res) => {
+    const id = req.params.id;
+    await Post.destroy({ where: {id: id} }).catch((err) =>
+        console.log(err)
+    );
+    res.status(200).send("Post is deleted");
+}
 
 
 module.exports = {
-    create
-    // getPostList
+    create,
+    getPostList,
+    getPostDetail,
+    update,
+    deletePost
 }
