@@ -41,6 +41,6 @@ class NlpInit():
         self.porter = nltk.PorterStemmer()
         self.ELMO = WordEmbeddings(self.options_file, self.weight_file, cuda_device=0)
         self.SIF = SentEmbeddings(self.ELMO, lamda=1.0)
-        self.en_model = StanfordCoreNLP(r'stanford-corenlp-full-2018-02-27',
+        self.en_model = StanfordCoreNLP(r'nlp_prod/stanford-corenlp-full-2018-02-27',
                                         quiet=True)  # download from https://stanfordnlp.github.io/CoreNLP/
         self.elmo_layers_weight = [0.0, 1.0, 0.0]
