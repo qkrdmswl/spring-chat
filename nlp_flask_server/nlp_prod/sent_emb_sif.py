@@ -13,20 +13,20 @@ class SentEmbeddings():
 
     def __init__(self,
                  word_embeddor,
-                 weightfile_pretrain='enwiki_vocab_min200.txt',
-                 weightfile_finetune='inspec_vocab.txt',
+                 weightfile_pretrain='nlp_prod/enwiki_vocab_min200.txt',
+                 weightfile_finetune='nlp_prod/inspec_vocab.txt',
                  weightpara_pretrain=2.7e-4,
                  weightpara_finetune=2.7e-4,
                  lamda=1.0,database="",embeddings_type="elmo"):
 
         if(database=="Inspec"):
-            weightfile_finetune = 'inspec_vocab.txt'
+            weightfile_finetune = 'nlp_prod/inspec_vocab.txt'
         elif(database=="Duc2001"):
-            weightfile_finetune = 'duc2001_vocab.txt'
+            weightfile_finetune = 'nlp_prod/duc2001_vocab.txt'
         elif(database=="SemEval2017"):
-            weightfile_finetune = 'semeval_vocab.txt'
+            weightfile_finetune = 'nlp_prod/semeval_vocab.txt'
         else:
-            weightfile_finetune = 'enwiki_vocab_min200.txt'
+            weightfile_finetune = 'nlp_prod/enwiki_vocab_min200.txt'
 
         self.word2weight_pretrain = get_word_weight(weightfile_pretrain, weightpara_pretrain)
         self.word2weight_finetune = get_word_weight(weightfile_finetune, weightpara_finetune)

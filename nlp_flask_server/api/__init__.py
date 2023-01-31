@@ -1,7 +1,6 @@
 from flask import Flask
 from nlp_prod.nlp_init import NlpInit
 from config.config import Config
-from controllers.tagController import *
 
 app = Flask(__name__)
 
@@ -18,6 +17,7 @@ def load_model():
 
 def register_blueprints(app):
     print("Registering Flask Blueprints.")
+    from api.controllers.tagController import tagController
     app.register_blueprint(tagController)
 
     return app
