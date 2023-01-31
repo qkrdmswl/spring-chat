@@ -1,8 +1,4 @@
-from flask import Flask
 from nlp_prod.nlp_init import NlpInit
-from config.config import Config
-
-app = Flask(__name__)
 
 model = None
 messenger = None
@@ -24,6 +20,8 @@ def register_blueprints(app):
 
 
 def create_app():
+    from flask import Flask
+    from config.config import Config
     app = Flask(__name__)
 
     #config
