@@ -148,7 +148,7 @@ def SIFRank(text, SIF, en_model, method="average", N=15,
     :param if_EA: if take  embeddings alignment(EA)
     :return:
     """
-    text_obj = input_representation.InputTextObj(en_model, text)
+    text_obj = InputTextObj(en_model, text)
     sent_embeddings, candidate_embeddings_list = SIF.get_tokenized_sent_embeddings(text_obj,if_DS=if_DS,if_EA=if_EA)
     dist_list = []
     for i, emb in enumerate(candidate_embeddings_list):

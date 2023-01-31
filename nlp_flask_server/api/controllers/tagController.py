@@ -17,6 +17,7 @@ def extract_now():
             'tags': tags
         }
     except Exception as e:
+        print(e)
         return {
             'success': False
         }
