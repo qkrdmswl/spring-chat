@@ -1,0 +1,15 @@
+allennlp==0.8.4
+stanfordcorenlp==3.9.1.1
+torch @ https://download.pytorch.org/whl/cu116/torch-1.13.0%2Bcu116-cp38-cp38-linux_x86_64.whl
+torchaudio @ https://download.pytorch.org/whl/cu116/torchaudio-0.13.0%2Bcu116-cp38-cp38-linux_x86_64.whl
+torchsummary==1.5.1
+torchtext==0.14.0
+torchvision @ https://download.pytorch.org/whl/cu116/torchvision-0.14.0%2Bcu116-cp38-cp38-linux_x86_64.whl
+scikit-learn==0.22.2
+overrides==3.1.0
+flair==0.11.3
+gensim==3.6.0
+nltk==3.7
+symspellpy==6.7.7
+Pattern==3.6
+PyMySQL==1.0.2
