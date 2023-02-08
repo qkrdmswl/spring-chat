@@ -1,4 +1,4 @@
-package springchat.lightChat;
+package springchat.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;

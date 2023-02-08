@@ -1,4 +1,4 @@
-package springchat.lightChat;
+package springchat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -20,6 +20,8 @@ public class ChatRoomDTO {
         this.name = name;
     }
 
+
+    // 이미 입장해 있는 사람이면?
     public void handlerActions(WebSocketSession session, ChatMessageDTO chatMessageDTO, ChatService chatService) {
         if (chatMessageDTO.getType().equals(ChatMessageDTO.MessageType.ENTER)) {
             sessions.add(session);

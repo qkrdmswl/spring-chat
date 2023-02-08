@@ -1,4 +1,4 @@
-package springchat.lightChat;
+package springchat.config;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
